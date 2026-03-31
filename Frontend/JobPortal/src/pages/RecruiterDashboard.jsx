@@ -387,7 +387,7 @@ const RecruiterDashboard = () => {
                             <td data-label="Job Applying For">{app.jobTitle}</td>
                             <td data-label="Resume">
                               {resumeLink ? (
-                                <a href={`http://localhost:8080/applications/resume/${app.id}`} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()} style={{ color: 'var(--primary)', fontWeight: '500', display: 'flex', alignItems: 'center', gap: '5px', textDecoration: 'none' }}>
+                                <a href={`https://job-portal-ev3y.onrender.com/applications/resume/${app.id}`} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()} style={{ color: 'var(--primary)', fontWeight: '500', display: 'flex', alignItems: 'center', gap: '5px', textDecoration: 'none' }}>
                                   <FileText size={16} /> View PDF
                                 </a>
                               ) : 'Not Provided'}

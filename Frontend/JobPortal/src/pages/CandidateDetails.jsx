@@ -123,7 +123,7 @@ const CandidateDetails = () => {
               <div>
                 <p style={{ margin: '0 0 10px 0', fontSize: '12px', textTransform: 'uppercase', color: 'var(--text-muted)', fontWeight: '600' }}>Attached Resume</p>
                 {resumeLink ? (
-                  <a href={`http://localhost:8080/applications/resume/${id}`} target="_blank" rel="noreferrer" style={{ color: 'var(--primary)', fontWeight: '600', display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none', padding: '10px 16px', background: 'var(--primary-light)', borderRadius: '8px' }}>
+                  <a href={`https://job-portal-ev3y.onrender.com/applications/resume/${id}`} target="_blank" rel="noreferrer" style={{ color: 'var(--primary)', fontWeight: '600', display: 'inline-flex', alignItems: 'center', gap: '8px', textDecoration: 'none', padding: '10px 16px', background: 'var(--primary-light)', borderRadius: '8px' }}>
                     <FileText size={18} /> Download/View PDF
                   </a>
                 ) : (
