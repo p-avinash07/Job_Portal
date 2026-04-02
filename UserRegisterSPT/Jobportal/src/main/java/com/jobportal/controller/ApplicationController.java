@@ -17,11 +17,15 @@ import org.springframework.web.multipart.MultipartFile;
 import com.jobportal.entity.Application;
 import com.jobportal.entity.ApplicationStatus;
 import com.jobportal.service.ApplicationService;
+import com.jobportal.service.EmailService;
 
 @RestController
 @RequestMapping("/applications")
-@CrossOrigin(origins = "http://localhost:5173") // better than *
+@CrossOrigin(origins = "https://job-portal-nine-coral-93.vercel.app") // better than *
 public class ApplicationController {
+
+    @Autowired
+    private EmailService emailService;
 
     @Autowired
     private ApplicationService applicationService;
@@ -114,13 +118,21 @@ public class ApplicationController {
 
     // ✅ FIXED STATUS UPDATE (VERY IMPORTANT)
     @PutMapping("/status/{id}")
-    public ResponseEntity<?> updateStatus(@PathVariable Long id,
-                                          @RequestParam String status) {
-        try {
-            Application updated = applicationService.updateStatus(id, status);
-            return ResponseEntity.ok(updated);
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body("Error updating status: " + e.getMessage());
-        }
+public ResponseEntity<?> updateStatus(@PathVariable Long id,
+                                      @RequestParam String status) {
+    try {
+        Application updated = applicationService.updateStatus(id, status);
+
+        // ✅ SEND EMAIL
+        String subject = "Application Status Update";
+        String body = "Your application status is updated to: " + status;
+
+        emailService.sendEmail(updated.getApplicantEmail(), subject, body);
+
+        return ResponseEntity.ok(updated);
+
+    } catch (Exception e) {
+        return ResponseEntity.badRequest().body("Error updating status: " + e.getMessage());
     }
+}
 }
