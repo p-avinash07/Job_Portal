@@ -12,7 +12,7 @@ public class CorsConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("https://job-portal-ev3y.onrender.com")
+                        .allowedOrigins("https://job-portal-nine-coral-93.vercel.app")
                         .allowedMethods("*")
                         .allowedHeaders("*");
             }
